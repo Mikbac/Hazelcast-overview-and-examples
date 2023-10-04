@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="SampleApplication-Instance-2" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <envs>
+      <env name="SERVER_PORT" value="8081" />
+    </envs>
+    <module name="Sample-Embedded-Mode-app.main" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="pl.example.hazelcastoverviewandexamples.SampleApplication" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

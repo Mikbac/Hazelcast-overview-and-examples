@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "d74ecf1a-bfa6-4b47-8b14-1eefdc67a85c",
+		"name": "Hazelcast",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add new sample",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"key\": \"aaa\",\r\n    \"value\": \"sample value\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/sample",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"sample"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "test1",
+							"disabled": true
+						},
+						{
+							"key": "value",
+							"value": "val1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get sample",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/v1/sample/aaa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"sample",
+						"aaa"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
