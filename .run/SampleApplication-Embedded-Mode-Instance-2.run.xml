@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="SampleApplication-Instance-2" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+  <configuration default="false" name="SampleApplication-Embedded-Mode-Instance-2" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
     <envs>
       <env name="SERVER_PORT" value="8081" />
     </envs>
