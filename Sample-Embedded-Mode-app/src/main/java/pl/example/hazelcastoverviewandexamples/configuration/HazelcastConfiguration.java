@@ -1,12 +1,16 @@
 package pl.example.hazelcastoverviewandexamples.configuration;
 
 import com.hazelcast.config.Config;
-import com.hazelcast.config.ManagementCenterConfig;
+import com.hazelcast.config.MapConfig;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.map.IMap;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+/**
+ * Created by MikBac on 07.10.2023
+ */
 
 @Configuration
 public class HazelcastConfiguration {
@@ -18,6 +22,10 @@ public class HazelcastConfiguration {
         // Ports range
         // (optional)
         config.setClusterName("Sample-cluster");
+        config.getNetworkConfig()
+                .getJoin()
+                .getMulticastConfig()
+                .setEnabled(true);
 
         // ------------------------------------------------------------------------------
 
@@ -41,10 +49,15 @@ public class HazelcastConfiguration {
 
         //
         // (optional)
-        config.setManagementCenterConfig(
-                new ManagementCenterConfig()
-                        .setConsoleEnabled(true)
-        );
+//        config.setManagementCenterConfig(
+//                new ManagementCenterConfig()
+//                        .setConsoleEnabled(true)
+//        );
+
+
+        final MapConfig countriesCache = new MapConfig("countriesCache");
+        countriesCache.setTimeToLiveSeconds(60);
+        config.addMapConfig(countriesCache);
 
         return config;
     }
@@ -55,7 +68,7 @@ public class HazelcastConfiguration {
     }
 
     @Bean
-    public IMap<String, String> nameMap(HazelcastInstance instance) {
+    public IMap<String, String> namesMap(HazelcastInstance instance) {
         return instance.getMap("namesMap");
     }
 

@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "d74ecf1a-bfa6-4b47-8b14-1eefdc67a85c",
+		"_postman_id": "8cc0894f-3fde-446d-9257-15aed1995b61",
 		"name": "Hazelcast",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3305338"
 	},
 	"item": [
 		{
@@ -62,6 +63,26 @@
 						"v1",
 						"sample",
 						"aaa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get countries",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/country",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"country"
 					]
 				}
 			},
