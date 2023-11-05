@@ -1,4 +1,4 @@
-package pl.example.hazelcastoverviewandexamples.model;
+package pl.mikbac.hazelcastoverviewandexamples.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

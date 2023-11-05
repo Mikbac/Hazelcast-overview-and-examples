@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "8cc0894f-3fde-446d-9257-15aed1995b61",
+		"_postman_id": "b06ed1ba-d745-4c71-9fc6-5478a6595ba2",
 		"name": "Hazelcast",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "3305338"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -69,6 +68,33 @@
 			"response": []
 		},
 		{
+			"name": "Get sample with predict",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/country/cache?value=aaa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"country",
+						"cache"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "aaa"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Get countries",
 			"request": {
 				"method": "GET",
@@ -83,6 +109,49 @@
 					"path": [
 						"v1",
 						"country"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get country details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/country/PL",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"country",
+						"PL"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get country details from cache",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/country/cache/PL",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"country",
+						"cache",
+						"PL"
 					]
 				}
 			},

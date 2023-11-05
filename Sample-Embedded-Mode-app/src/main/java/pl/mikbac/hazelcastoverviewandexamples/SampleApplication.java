@@ -1,4 +1,4 @@
-package pl.example.hazelcastoverviewandexamples;
+package pl.mikbac.hazelcastoverviewandexamples;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

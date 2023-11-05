@@ -1,4 +1,4 @@
-package pl.example.hazelcastoverviewandexamples;
+package pl.mikbac.hazelcastoverviewandexamples;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

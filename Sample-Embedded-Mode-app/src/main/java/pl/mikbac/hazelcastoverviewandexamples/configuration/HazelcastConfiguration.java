@@ -1,12 +1,15 @@
-package pl.example.hazelcastoverviewandexamples.configuration;
+package pl.mikbac.hazelcastoverviewandexamples.configuration;
 
 import com.hazelcast.config.Config;
 import com.hazelcast.config.MapConfig;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.map.IMap;
+import com.hazelcast.spring.cache.HazelcastCacheManager;
+import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import pl.mikbac.hazelcastoverviewandexamples.model.SampleModel;
 
 /**
  * Created by MikBac on 07.10.2023
@@ -14,6 +17,17 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class HazelcastConfiguration {
+
+
+    @Bean
+    public CacheManager cacheManager(final Config config) {
+        return new HazelcastCacheManager(instance(config));
+    }
+
+    @Bean
+    public HazelcastInstance instance(final Config config) {
+        return Hazelcast.newHazelcastInstance(config);
+    }
 
     @Bean
     public Config config() {
@@ -59,16 +73,15 @@ public class HazelcastConfiguration {
         countriesCache.setTimeToLiveSeconds(60);
         config.addMapConfig(countriesCache);
 
+        final MapConfig countryDetailsCache = new MapConfig("countryDetailsCache");
+        countryDetailsCache.setTimeToLiveSeconds(60);
+        config.addMapConfig(countryDetailsCache);
+
         return config;
     }
 
     @Bean
-    public HazelcastInstance instance(Config config) {
-        return Hazelcast.newHazelcastInstance(config);
-    }
-
-    @Bean
-    public IMap<String, String> namesMap(HazelcastInstance instance) {
+    public IMap<String, SampleModel> namesMap(HazelcastInstance instance) {
         return instance.getMap("namesMap");
     }
 

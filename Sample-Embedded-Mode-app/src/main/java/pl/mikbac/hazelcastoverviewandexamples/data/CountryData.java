@@ -2,7 +2,7 @@
  * Created by MikBac on 7.10.2023
  */
 
-package pl.example.hazelcastoverviewandexamples.data;
+package pl.mikbac.hazelcastoverviewandexamples.data;
 
 import lombok.Builder;
 import lombok.Data;
