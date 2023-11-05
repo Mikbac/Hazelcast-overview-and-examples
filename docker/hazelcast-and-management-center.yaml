@@ -18,7 +18,7 @@ services:
     ports:
       - '5701:5701'
     environment:
-      - HZ_NETWORK_PUBLICADDRESS=hazelcast-node-1:5701
+      - HZ_NETWORK_PUBLICADDRESS=host.docker.internal:5701
       - HZ_CLUSTERNAME=hello-world
     deploy:
       resources:
@@ -33,7 +33,7 @@ services:
     ports:
       - '5702:5701'
     environment:
-      - HZ_NETWORK_PUBLICADDRESS=hazelcast-node-2:5701
+      - HZ_NETWORK_PUBLICADDRESS=host.docker.internal:5702
       - HZ_CLUSTERNAME=hello-world
     deploy:
       resources:
