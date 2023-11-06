@@ -1,5 +1,7 @@
 package pl.mikbac.samplestandalonemodeapp.controller;
 
+import com.hazelcast.core.HazelcastInstance;
+import com.hazelcast.cp.lock.FencedLock;
 import com.hazelcast.map.IMap;
 import com.hazelcast.query.Predicate;
 import com.hazelcast.query.PredicateBuilder.EntryObject;
@@ -28,6 +30,7 @@ import java.util.UUID;
 public class SampleController {
 
     private final IMap<String, SampleModel> namesMap;
+    private final HazelcastInstance hazelcastInstance;
 
     @GetMapping("/v1/sample/{key}")
     public ResponseEntity<SampleData> getValueById(@PathVariable final String key) {
@@ -50,6 +53,19 @@ public class SampleController {
     public ResponseEntity<SampleData> addValue(@RequestBody() final SampleData sampleData) {
         namesMap.put(sampleData.getKey(), new SampleModel(UUID.randomUUID().toString(), sampleData.getValue()));
         return ResponseEntity.status(HttpStatus.CREATED).body(sampleData);
+    }
+
+    @PostMapping("/v1/sample/lock")
+    public ResponseEntity<String> makeSampleLock() throws InterruptedException {
+        FencedLock lock = hazelcastInstance.getCPSubsystem().getLock("myLock");
+        lock.lock();
+        try {
+            // do something here, e.g.
+            Thread.sleep(1000);
+        } finally {
+            lock.unlock();
+        }
+        return ResponseEntity.ok("TestLock");
     }
 
 }

@@ -6,6 +6,7 @@ import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.map.IMap;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import pl.mikbac.samplestandalonemodeapp.model.SampleModel;
 
 /**
@@ -16,6 +17,7 @@ import pl.mikbac.samplestandalonemodeapp.model.SampleModel;
 public class HazelcastConfiguration {
 
     @Bean
+    @Primary
     public HazelcastInstance instance(final ClientConfig clientConfig) {
         return HazelcastClient.newHazelcastClient(clientConfig);
     }

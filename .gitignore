@@ -9,3 +9,5 @@ out/
 /.idea/
 /Sample-Embedded-Mode-app/.gradle/
 /Sample-Embedded-Mode-app/build/
+/Sample-Standalone-Mode-app/.gradle/
+/Sample-Standalone-Mode-app/build/

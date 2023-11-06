@@ -2,15 +2,22 @@
 
 ## Theory
 
-[Base.md](docs%2FBase.md)
-[Installation.md](docs%2FInstallation.md)
-[Memory-Grid.md](docs%2FMemory-Grid.md)
+* [Base.md](docs/Base.md)
+* [Installation.md](docs/Installation.md)
+* [Data-Structures.md](docs/Data-Structures.md)
+* [Memory-Grid.md](docs/Memory-Grid.md)
+* [Distributed-Locks.md](docs/Distributed-Locks.md)
+* [Distributed-Computing.md](docs/Distributed-Computing.md)
+* [Concurrency-Issues.md](docs/Concurrency-Issues.md)
+
+----------------------------------------------------------------------
 
 ## Sample apps
 
 ### [Sample-Embedded-Mode-app](Sample-Embedded-Mode-app)
 
-A sample application with embedded Hazelcast and MySQL database as an example of using Spring Cache.
+A sample application with embedded Hazelcast, MySQL database as an example of using Spring Cache and distributed
+computing.
 
 Docker env:
 
@@ -20,8 +27,8 @@ docker compose -f ./docker/mysql.yaml up
 
 Starters:
 
-* [SampleApplication-Instance-1.run.xml](.run%2FSampleApplication-Instance-1.run.xml)
-* [SampleApplication-Instance-2.run.xml](.run%2FSampleApplication-Instance-2.run.xml)
+* [SampleApplication-Instance-1.run.xml](.run/SampleApplication-Instance-1.run.xml)
+* [SampleApplication-Instance-2.run.xml](.run/SampleApplication-Instance-2.run.xml)
 
 Addresses:
 
@@ -31,7 +38,7 @@ Addresses:
 
 ### [Sample-Standalone-Mode-app](Sample-Standalone-Mode-app)
 
-A sample application with a standalone Hazelcast cluster.
+A sample application with a standalone Hazelcast cluster and distributed lock.
 
 Docker env:
 
@@ -41,8 +48,8 @@ docker compose -f ./docker/hazelcast-and-management-center.yaml up
 
 Starters:
 
-* [SampleApplication-Standalone-Mode-Instance-1.run.xml](.run%2FSampleApplication-Standalone-Mode-Instance-1.run.xml)
-* [SampleApplication-Standalone-Mode-Instance-2.run.xml](.run%2FSampleApplication-Standalone-Mode-Instance-2.run.xml)
+* [SampleApplication-Standalone-Mode-Instance-1.run.xml](.run/SampleApplication-Standalone-Mode-Instance-1.run.xml)
+* [SampleApplication-Standalone-Mode-Instance-2.run.xml](.run/SampleApplication-Standalone-Mode-Instance-2.run.xml)
 
 Addresses:
 

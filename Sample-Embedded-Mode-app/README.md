@@ -1,6 +1,5 @@
 # Sample application with Hazelcast in embedded mode
 
-
 ## Run
 
 ```shell

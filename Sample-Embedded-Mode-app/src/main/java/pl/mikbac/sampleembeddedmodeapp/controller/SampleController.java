@@ -1,5 +1,7 @@
 package pl.mikbac.sampleembeddedmodeapp.controller;
 
+import com.hazelcast.core.HazelcastInstance;
+import com.hazelcast.core.IExecutorService;
 import com.hazelcast.map.IMap;
 import com.hazelcast.query.Predicate;
 import com.hazelcast.query.PredicateBuilder.EntryObject;
@@ -7,12 +9,19 @@ import com.hazelcast.query.Predicates;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import pl.mikbac.sampleembeddedmodeapp.data.SampleData;
 import pl.mikbac.sampleembeddedmodeapp.model.SampleModel;
+import pl.mikbac.sampleembeddedmodeapp.runnable.EchoTask;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.IntStream;
 
 /**
  * Created by MikBac on 07.10.2023
@@ -23,6 +32,7 @@ import java.util.UUID;
 public class SampleController {
 
     private final IMap<String, SampleModel> namesMap;
+    private final HazelcastInstance hazelcastInstance;
 
     @GetMapping("/v1/sample/{key}")
     public ResponseEntity<SampleData> getValueById(@PathVariable final String key) {
@@ -45,6 +55,13 @@ public class SampleController {
     public ResponseEntity<SampleData> addValue(@RequestBody() final SampleData sampleData) {
         namesMap.put(sampleData.getKey(), new SampleModel(UUID.randomUUID().toString(), sampleData.getValue()));
         return ResponseEntity.status(HttpStatus.CREATED).body(sampleData);
+    }
+
+    @PostMapping("/v1/sample/executor")
+    public ResponseEntity<String> makeSampleExecutor() {
+        IExecutorService executor = hazelcastInstance.getExecutorService("executor");
+        IntStream.range(1, 10).forEach(i -> executor.submit(new EchoTask(i)));
+        return ResponseEntity.ok("TestExecutor");
     }
 
 }
